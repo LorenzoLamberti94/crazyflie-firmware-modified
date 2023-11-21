@@ -111,14 +111,12 @@ static bool mrInitSensor(VL53L1_Dev_t *pdev, uint32_t pca95pin, char *name)
     if (vl53l1xInit(pdev, I2C1_DEV)){
         DEBUG_PRINT("[%s] init sensor [OK]\n", name);
         status = true;
-		DEBUG_PRINT("sono status dentro all'inizializzazione del sensore %d \n",status);
+		
     }
     else{
         DEBUG_PRINT("[%s] init sensor [FAIL]\n", name);
         status = false;
-		DEBUG_PRINT("qui passo \n");
     }
-	DEBUG_PRINT("Status subuto fuori %d \n",status);
     if (status == 1){
         /* --- Print Preset mode --- */
         VL53L1_PresetModes presetMode;
@@ -149,7 +147,6 @@ static bool mrInitSensor(VL53L1_Dev_t *pdev, uint32_t pca95pin, char *name)
 				break;
 		}
         /* --- Print Timing Budget  --- */
-        //DEBUG_PRINT("sono status prima %d\n",status);
         uint32_t measurementTimingBudgetMicroSeconds;
         VL53L1_GetMeasurementTimingBudgetMicroSeconds(pdev, &measurementTimingBudgetMicroSeconds);
         DEBUG_PRINT("[%s] Measurement timing budget: %u us\n",  name, measurementTimingBudgetMicroSeconds);
